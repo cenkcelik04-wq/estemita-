@@ -41,7 +41,7 @@ export default function HomePage() {
               fill
               className="object-cover"
               alt="Estemita Aesthetic Clinic konsültasyon odası"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBo4-5zspDUWbuWZSNr3edPvXwPBmP1pk4Kx7QuCgBAnZY8-Sjsb8kD0gacHTJbGRAs_v-XSyZW2rol3JbVqyeWNhkZCfW7qoMOFzuGB1j1uuI7N_vVeRUmzT_kxUmUkZbzOmw49pDyP1FgIuqdm37PSO9NB51kAWMpdKk2yhVCW7USRdP6fw28OuCC9oIHbMgsZlnF6sTGiJ7k28A9aeZOvolgdi6exTD-jvsawldW0cXDqNifzfc"
+              src="/images/giriş.jpg"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent" />
           </div>
