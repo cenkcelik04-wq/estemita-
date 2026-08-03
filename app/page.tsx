@@ -41,7 +41,7 @@ export default function HomePage() {
               fill
               className="object-cover"
               alt="Estemita Aesthetic Clinic konsültasyon odası"
-              src="/images/giriş.jpg"
+              src="/images/giris.jpg"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent" />
           </div>
