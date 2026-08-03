@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
+import Reveal from "@/components/Reveal";
 import { clinic } from "@/lib/site-config";
 import ContactForm from "./ContactForm";
 
@@ -19,7 +20,7 @@ export default function ContactPage() {
 
       <section className="py-24 bg-surface">
         <div className="max-w-container-max mx-auto px-margin-desktop max-md:px-margin-mobile grid grid-cols-1 md:grid-cols-2 gap-16">
-          <div className="flex flex-col gap-stack-md">
+          <Reveal className="flex flex-col gap-stack-md">
             <h2 className="font-headline-md text-headline-md text-primary mb-2">İletişim Bilgileri</h2>
             <div className="flex items-start gap-3 text-on-surface-variant">
               <span className="material-symbols-outlined text-secondary">location_on</span>
@@ -61,9 +62,11 @@ export default function ContactPage() {
                 src={`https://www.google.com/maps?q=${encodeURIComponent(clinic.address)}&output=embed`}
               />
             </div>
-          </div>
+          </Reveal>
 
-          <ContactForm />
+          <Reveal delay={150}>
+            <ContactForm />
+          </Reveal>
         </div>
       </section>
     </>

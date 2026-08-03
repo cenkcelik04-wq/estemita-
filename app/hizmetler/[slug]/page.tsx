@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import PageHero from "@/components/PageHero";
+import Reveal from "@/components/Reveal";
 import { services } from "@/lib/site-config";
 
 export function generateStaticParams() {
@@ -34,10 +35,15 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
 
       <section className="py-24 bg-surface">
         <div className="max-w-container-max mx-auto px-margin-desktop max-md:px-margin-mobile grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div className="relative h-[450px] rounded-xl overflow-hidden ambient-shadow">
-            <Image fill className="object-cover" alt={service.title} src={service.image} />
-          </div>
-          <div className="flex flex-col gap-stack-sm">
+          <Reveal className="relative h-[450px] rounded-xl overflow-hidden ambient-shadow group">
+            <Image
+              fill
+              className="object-cover transition-transform duration-700 group-hover:scale-105"
+              alt={service.title}
+              src={service.image}
+            />
+          </Reveal>
+          <Reveal delay={150} className="flex flex-col gap-stack-sm">
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-surface-container-low rounded-DEFAULT w-fit border border-outline-variant/30">
               <span className="material-symbols-outlined text-secondary text-sm">verified</span>
               <span className="font-label-md text-label-md text-tertiary uppercase tracking-widest text-xs">
@@ -61,12 +67,12 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
             >
               Randevu Al
             </Link>
-          </div>
+          </Reveal>
         </div>
       </section>
 
       <section className="py-24 bg-surface-container-low">
-        <div className="max-w-container-max mx-auto px-margin-desktop max-md:px-margin-mobile text-center max-w-2xl mx-auto">
+        <Reveal className="max-w-container-max mx-auto px-margin-desktop max-md:px-margin-mobile text-center max-w-2xl">
           <span className="material-symbols-outlined text-secondary text-5xl mb-4 block">diamond</span>
           <h2 className="font-headline-md text-headline-md text-primary mb-4">Diğer Hizmetlerimizi İnceleyin</h2>
           <p className="font-body-md text-body-md text-on-surface-variant mb-8">
@@ -87,7 +93,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
               İletişime Geçin
             </Link>
           </div>
-        </div>
+        </Reveal>
       </section>
     </>
   );

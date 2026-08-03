@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import CountUp from "@/components/CountUp";
 import PageHero from "@/components/PageHero";
+import Reveal from "@/components/Reveal";
 import { clinic } from "@/lib/site-config";
 
 export const metadata: Metadata = {
@@ -21,7 +23,7 @@ export default function AboutPage() {
       <section className="py-24 bg-surface">
         <div className="max-w-container-max mx-auto px-margin-desktop max-md:px-margin-mobile">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
-            <div className="col-span-1 md:col-span-5 relative">
+            <Reveal className="col-span-1 md:col-span-5 relative">
               <div className="relative rounded-xl overflow-hidden h-[700px] ambient-shadow max-md:h-[500px]">
                 <Image fill className="object-cover" alt={clinic.doctor.name} src="/images/doctor.jpg" />
               </div>
@@ -33,11 +35,11 @@ export default function AboutPage() {
                   {clinic.doctor.title}
                 </span>
               </div>
-            </div>
+            </Reveal>
             <div className="col-span-1 md:col-span-1 md:col-start-7 hidden md:block h-full">
               <div className="w-[1px] h-3/4 bg-outline-variant/50 mx-auto mt-12" />
             </div>
-            <div className="col-span-1 md:col-span-5 flex flex-col gap-stack-md">
+            <Reveal delay={150} className="col-span-1 md:col-span-5 flex flex-col gap-stack-md">
               <div className="inline-flex items-center gap-2 px-3 py-1 bg-surface-container-low rounded-DEFAULT w-fit border border-outline-variant/30">
                 <span className="material-symbols-outlined text-secondary text-sm">verified</span>
                 <span className="font-label-md text-label-md text-tertiary uppercase tracking-widest text-xs">
@@ -59,29 +61,31 @@ export default function AboutPage() {
               </p>
               <div className="grid grid-cols-2 gap-6 mt-6 pt-6 border-t border-outline-variant/30">
                 <div>
-                  <span className="block font-headline-md text-headline-md text-secondary mb-1">
-                    {clinic.stats.experienceYears}
-                  </span>
+                  <CountUp
+                    value={clinic.stats.experienceYears}
+                    className="block font-headline-md text-headline-md text-secondary mb-1"
+                  />
                   <span className="font-label-md text-label-md text-tertiary uppercase text-xs tracking-wider">
                     Yıllık Deneyim
                   </span>
                 </div>
                 <div>
-                  <span className="block font-headline-md text-headline-md text-secondary mb-1">
-                    {clinic.stats.happyPatients}
-                  </span>
+                  <CountUp
+                    value={clinic.stats.happyPatients}
+                    className="block font-headline-md text-headline-md text-secondary mb-1"
+                  />
                   <span className="font-label-md text-label-md text-tertiary uppercase text-xs tracking-wider">
                     Mutlu Danışan
                   </span>
                 </div>
               </div>
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>
 
       <section className="py-24 bg-surface-container-low">
-        <div className="max-w-container-max mx-auto px-margin-desktop max-md:px-margin-mobile text-center max-w-2xl mx-auto">
+        <Reveal className="max-w-container-max mx-auto px-margin-desktop max-md:px-margin-mobile text-center max-w-2xl">
           <h2 className="font-headline-lg text-headline-lg text-primary max-md:font-headline-lg-mobile max-md:text-headline-lg-mobile mb-6">
             Sizi Kliniğimizde Ağırlamaktan Mutluluk Duyarız
           </h2>
@@ -95,7 +99,7 @@ export default function AboutPage() {
           >
             Randevu Al
           </Link>
-        </div>
+        </Reveal>
       </section>
     </>
   );

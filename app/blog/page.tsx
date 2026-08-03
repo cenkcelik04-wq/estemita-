@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
+import Reveal from "@/components/Reveal";
 import { blogPosts } from "@/lib/site-config";
 
 export const metadata: Metadata = {
@@ -19,28 +20,27 @@ export default function BlogPage() {
 
       <section className="py-24 bg-surface">
         <div className="max-w-container-max mx-auto px-margin-desktop max-md:px-margin-mobile grid grid-cols-1 md:grid-cols-2 gap-8">
-          {blogPosts.map((post) => (
-            <article
-              key={post.slug}
-              className="flex flex-col gap-4 p-8 rounded-xl bg-surface-container-low ambient-shadow border border-outline-variant/30"
-            >
-              <span className="font-label-md text-label-md text-secondary uppercase tracking-widest text-xs w-fit px-3 py-1 rounded-DEFAULT bg-surface-container-highest">
-                {post.category}
-              </span>
-              <h2 className="font-headline-md text-headline-md text-primary leading-snug">{post.title}</h2>
-              <p className="font-body-md text-body-md text-on-surface-variant leading-relaxed">{post.excerpt}</p>
-              <div className="flex items-center gap-3 text-on-surface-variant font-label-md text-label-md text-xs uppercase tracking-widest mt-auto pt-4 border-t border-outline-variant/30">
-                <span>{post.date}</span>
-                <span>·</span>
-                <span>{post.readTime} okuma</span>
-              </div>
-            </article>
+          {blogPosts.map((post, index) => (
+            <Reveal key={post.slug} delay={(index % 2) * 120}>
+              <article className="flex flex-col gap-4 p-8 rounded-xl bg-surface-container-low ambient-shadow border border-outline-variant/30 h-full transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+                <span className="font-label-md text-label-md text-secondary uppercase tracking-widest text-xs w-fit px-3 py-1 rounded-DEFAULT bg-surface-container-highest">
+                  {post.category}
+                </span>
+                <h2 className="font-headline-md text-headline-md text-primary leading-snug">{post.title}</h2>
+                <p className="font-body-md text-body-md text-on-surface-variant leading-relaxed">{post.excerpt}</p>
+                <div className="flex items-center gap-3 text-on-surface-variant font-label-md text-label-md text-xs uppercase tracking-widest mt-auto pt-4 border-t border-outline-variant/30">
+                  <span>{post.date}</span>
+                  <span>·</span>
+                  <span>{post.readTime} okuma</span>
+                </div>
+              </article>
+            </Reveal>
           ))}
         </div>
       </section>
 
       <section className="py-24 bg-surface-container-low">
-        <div className="max-w-container-max mx-auto px-margin-desktop max-md:px-margin-mobile text-center max-w-2xl mx-auto">
+        <Reveal className="max-w-container-max mx-auto px-margin-desktop max-md:px-margin-mobile text-center max-w-2xl">
           <h2 className="font-headline-md text-headline-md text-primary mb-4">Uygulamalarımızı Yakından Tanıyın</h2>
           <p className="font-body-md text-body-md text-on-surface-variant mb-8">
             Blog yazılarımızda bahsettiğimiz tüm medikal cilt bakımı, bölgesel zayıflama ve altın iğne
@@ -52,7 +52,7 @@ export default function BlogPage() {
           >
             İletişime Geçin
           </Link>
-        </div>
+        </Reveal>
       </section>
     </>
   );

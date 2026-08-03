@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import PageHero from "@/components/PageHero";
+import Reveal from "@/components/Reveal";
 
 export const metadata: Metadata = {
   title: "Galeri | Estemita Aesthetic Clinic",
@@ -27,10 +28,18 @@ export default function GalleryPage() {
 
       <section className="py-24 bg-surface">
         <div className="max-w-container-max mx-auto px-margin-desktop max-md:px-margin-mobile grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {galleryImages.map((image) => (
-            <div key={image.src} className="relative h-72 rounded-xl overflow-hidden ambient-shadow bg-surface-container-low">
-              <Image fill className="object-cover" alt={image.alt} src={image.src} />
-            </div>
+          {galleryImages.map((image, index) => (
+            <Reveal key={image.src} delay={(index % 3) * 100}>
+              <div className="relative h-72 rounded-xl overflow-hidden ambient-shadow bg-surface-container-low group">
+                <Image
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                  alt={image.alt}
+                  src={image.src}
+                />
+                <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors duration-500" />
+              </div>
+            </Reveal>
           ))}
         </div>
       </section>
