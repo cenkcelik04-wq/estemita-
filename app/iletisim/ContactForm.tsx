@@ -1,12 +1,30 @@
 "use client";
 
 import { useState } from "react";
+import { clinic } from "@/lib/site-config";
 
 export default function ContactForm() {
   const [status, setStatus] = useState<"idle" | "submitted">("idle");
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    const name = formData.get("name");
+    const phone = formData.get("phone");
+    const email = formData.get("email");
+    const message = formData.get("message");
+
+    const text = [
+      "Merhaba, web sitesinden randevu talep ediyorum.",
+      `Ad Soyad: ${name}`,
+      `Telefon: ${phone}`,
+      `E-posta: ${email}`,
+      message ? `Mesaj: ${message}` : null,
+    ]
+      .filter(Boolean)
+      .join("\n");
+
+    window.open(`${clinic.whatsappHref}?text=${encodeURIComponent(text)}`, "_blank", "noopener,noreferrer");
     setStatus("submitted");
   }
 
